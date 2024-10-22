@@ -44,6 +44,8 @@ http {
     absolute_redirect off;
     server_tokens off;
 
+    proxy_force_ranges on;
+
     upstream mendix {
         server 127.0.0.1:{{ runtime_port }};
         keepalive 8;
@@ -75,6 +77,7 @@ http {
         proxy_buffering off;
         proxy_request_buffering off;
         {% endif %}
+	proxy_force_ranges on;
         proxy_intercept_errors {{ "on" if location.proxy_intercept_errors_enabled else "off" }};
         satisfy {{ location.satisfy }};
         {% if location.ipfilter_ips is not none %}
