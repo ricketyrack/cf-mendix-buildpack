@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# install-python (sourced before this) sets -e; reset so failures here are handled explicitly
+set +e
 
 # Compile script is executed from /home/vcap and buildpack is downloaded in /tmp/buildpacks/<<something>>/
 # Determine the buildpack folder based on this file
@@ -39,7 +41,7 @@ then
 fi
 
 echo " ---> Bootstrapping pip..."
-if [ "$CF_STACK" == "cflinuxfs4" ]; then
+if [[ "$CF_STACK" =~ ^cflinuxfs[45]$ ]]; then
   PIP_CMD="pip3"
 else
   PIP_CMD="pip"
