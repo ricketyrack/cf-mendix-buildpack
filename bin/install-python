@@ -11,7 +11,7 @@ function main() {
 
   if [ ! -d "/tmp/python/bin" ]; then
     python_dep_name=$(get_python_from_manifest "$buildpack_dir")
-    echo " -------> Providing Python $(echo $python_dep_name | cut -d'_' -f 2) (required by the buildpack to run in cflinuxfs4)"
+    echo " -------> Providing Python $(echo $python_dep_name | cut -d'_' -f 2) (required by the buildpack to run in ${CF_STACK:-cflinuxfs4})"
 
     if [ ! -d "$buildpack_dir/dependencies" ]; then
       setup_online "$python_dep_name" "$install_dir" "$buildpack_dir"

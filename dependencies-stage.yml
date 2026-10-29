@@ -6,4 +6,5 @@
   sha256: dda5228c36196f8a7346767ad9c9ac774ec270aa55065beb8d3d052d652b9120
   cf_stacks:
     - cflinuxfs4
+    - cflinuxfs5
   source_sha256: cefea32d3be89c02436711c95a45c7f8e880105514b78680c14fe76f5709a0f6

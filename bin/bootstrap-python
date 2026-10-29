@@ -57,10 +57,11 @@ then
         curl -sS https://bootstrap.pypa.io/pip/get-pip.py -o get-pip.py
         python3 get-pip.py install $PIP_VERBOSITY_FLAGS --user --no-warn-script-location
     fi
-    PIP_CMD="/home/vcap/.local/bin/pip"
+    USER_BASE=$(python3 -m site --user-base)
+    PIP_CMD="${USER_BASE}/bin/pip"
 else
-    # pip is bundled on the root FS
-    if [ "$CF_STACK" == "cflinuxfs4" ]; then
+    # pip is bundled on the root FS; remap to the pip paired with our python3
+    if [[ "$CF_STACK" =~ ^cflinuxfs[45]$ ]]; then
       PIP_CMD="python3 $(dirname "$(command -v python3)")/pip3"
     fi
     $PIP_CMD install --upgrade --user --no-warn-script-location --use-pep517 pip setuptools wheel

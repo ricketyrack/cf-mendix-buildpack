@@ -79,12 +79,12 @@ We recommend using a [maintained (LTS / MTS)](https://docs.mendix.com/releasenot
 
 ## Supported CFLinuxFS Versions
 
-| Buildpack | Supported    | End-of-Support |
-|-----------|--------------|----------------|
-| `4.x`     | `cflinuxfs3` | 2023 Q3        |
-| `5.x`     | `cflinuxfs4` | -              |
+| Buildpack | Supported                    | End-of-Support |
+|-----------|------------------------------|----------------|
+| `4.x`     | `cflinuxfs3`                 | 2023 Q3        |
+| `5.x`     | `cflinuxfs4`, `cflinuxfs5`   | -              |
 
-We recommend switching to version 5.x with cflinuxfs4 since cflinuxfs3 is no longer maintained.
+We recommend switching to version 5.x with cflinuxfs4 or cflinuxfs5. cflinuxfs3 is no longer maintained.
 
 ## Buildpack Releases and Version Pinning
 
@@ -109,7 +109,7 @@ The buildpack lifecycle has two main phases:
 
 The staging phase accepts archives in `.mda` format (Mendix Deployment Archive). There is experimental support for `.mpk` archives (Mendix Project Package). If an `.mpk` file is pushed, `mxbuild` is executed using Mono in the compile phase as well, the run phase stays the same.
 
-Pushing `.mpk` files is only supported on `cflinuxfs4` for Mendix version 9.24 or higher. To push MPKs for older Mendix versions, you should stay on `cflinuxfs3`.
+Pushing `.mpk` files is only supported on `cflinuxfs4` or `cflinuxfs5` for Mendix version 9.24 or higher. To push MPKs for older Mendix versions, you should stay on `cflinuxfs3`.
 
 ## How to Deploy
 

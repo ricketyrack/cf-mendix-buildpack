@@ -37,6 +37,7 @@ else:
 
 SUPPORTED_STACKS = [
     "cflinuxfs4",
+    "cflinuxfs5",
     None,
 ]  # None is allowed, but not supported
 
