@@ -29,6 +29,10 @@ if [[ "$CF_STACK" =~ ^cflinuxfs[45]$ ]]; then
   PYTHON_DIR="$DEPS_PATH/python"
   mkdir -p $PYTHON_DIR
   source "$BUILDPACK_PATH/bin/install-python" "$PYTHON_DIR" "$BUILDPACK_PATH"
+  # Write a profile.d script so LD_LIBRARY_PATH is set correctly at runtime.
+  # The staging path (/tmp/deps/N/python/lib) becomes /home/vcap/deps/N/python/lib at runtime.
+  mkdir -p "$DEPS_PATH/profile.d"
+  echo "export LD_LIBRARY_PATH=\"/home/vcap/deps/$4/python/lib:\${LD_LIBRARY_PATH:-}\"" > "$DEPS_PATH/profile.d/python_lib.sh"
 fi
 
 # Bootstrap the Python dependencies needed for the buildpack
