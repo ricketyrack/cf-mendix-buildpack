@@ -23,9 +23,9 @@ name: mendix
 version: ${VERSION}
 EOF
 
-# Install python if stack is cflinuxfs4
-if [ "$CF_STACK" == "cflinuxfs4" ]; then
-  echo " ---> Detected cflinuxfs4 without built-in python-dev..."
+# Install python if stack is cflinuxfs4 and cflinuxfs5
+if [[ "$CF_STACK" =~ ^cflinuxfs[45]$ ]]; then
+  echo " ---> Detected ${CF_STACK} without built-in python-dev..."
   PYTHON_DIR="$DEPS_PATH/python"
   mkdir -p $PYTHON_DIR
   source "$BUILDPACK_PATH/bin/install-python" "$PYTHON_DIR" "$BUILDPACK_PATH"

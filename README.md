@@ -57,7 +57,7 @@ Release notes are available for the [buildpack](https://github.com/mendix/cf-men
 
 ## Requirements
 
-The buildpack requires a cluster which supports the `cflinuxfs4` stack.
+The buildpack requires a cluster which supports the `cflinuxfs4` or `cflinuxfs5` stack.
 
 Additionally, we recommend a base level knowledge of Cloud Foundry. You should at least be familiar with the Cloud Foundry CLI.
 

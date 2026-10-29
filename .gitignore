@@ -249,3 +249,6 @@ vendor/
 
 # ruff
 .ruff_cache/
+
+# python virtual environment
+.venv/
